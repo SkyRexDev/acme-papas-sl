@@ -32,7 +32,7 @@ resource "google_compute_subnetwork" "public" {
   network       = google_compute_network.vpc_network.id
 }
 
-resource "google_compute_firewall" "allow-balancer-conections" {
+resource "google_compute_firewall" "allow_balancer_conections" {
   name          = "allow-balancer-connections"
   network       = google_compute_network.vpc_network.id
   source_ranges = ["0.0.0.0/0"]
@@ -49,7 +49,7 @@ resource "google_compute_firewall" "allow-balancer-conections" {
 
 }
 
-resource "google_compute_firewall" "allow-balancer-web-connections" {
+resource "google_compute_firewall" "allow_balancer_web_connections" {
   name        = "allow-balancer-web-connections"
   network     = google_compute_network.vpc_network.id
   source_tags = ["public"]
@@ -66,7 +66,7 @@ resource "google_compute_firewall" "allow-balancer-web-connections" {
 
 }
 
-resource "google_compute_firewall" "allow-web-server-ssh" {
+resource "google_compute_firewall" "allow_web_server_ssh" {
   name          = "allow-web-server-ssh"
   network       = google_compute_network.vpc_network.id
   source_ranges = ["0.0.0.0/0"]
@@ -79,7 +79,7 @@ resource "google_compute_firewall" "allow-web-server-ssh" {
 
 }
 
-resource "google_compute_instance" "backend-web-server" {
+resource "google_compute_instance" "backend_web_server" {
   name         = "web-server"
   machine_type = "e2-small"
   tags         = ["private"]
@@ -105,7 +105,7 @@ resource "google_compute_instance" "balancer" {
   tags         = ["public"]
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-11"
+      image = "ubuntu-os-cloud/ubuntu-2204-lts"
     }
   }
 

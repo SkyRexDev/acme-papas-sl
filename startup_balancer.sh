@@ -1,8 +1,12 @@
+#Initialize balancer instance.
+
 #! /bin/bash
+#Installs nginx
 sudo apt update
 sudo apt install nginx -y
+
+#Hardcoded nginx.conf file setting up proxy pass to web-server.
 sudo su
-my_ip=$(curl ifconfig.me)
 cat << EOF > /etc/nginx/nginx.conf
 user www-data;
 worker_processes auto;
@@ -20,7 +24,6 @@ http {
     server_name acmeonestic.com;
         location / {
             proxy_pass http://192.168.1.10:80/;
-			proxy_set_header X-Real-IP '$remote_addr';
 	    	proxy_set_header Host '$host';
         }
     }
@@ -96,4 +99,6 @@ http {
 #	}
 #}
 EOF
+
+#restart nginx
 systemctl restart nginx

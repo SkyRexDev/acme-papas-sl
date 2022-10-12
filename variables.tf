@@ -4,13 +4,16 @@ variable "project" {
 }
 
 variable "region" {
+  type    = string
   default = "europe-southwest1"
 }
 
 variable "zone" {
+  type    = string
   default = "europe-southwest1-a"
 }
 
 variable "network_name" {
+  type    = string
   default = "my-vpc-network"
 }

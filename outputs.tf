@@ -5,5 +5,5 @@ output "balancer_ip_addr" {
 
 output "web_server_ip_addr" {
   description = "Public IP address of the web-server"
-  value       = google_compute_instance.backend-web-server.network_interface.0.access_config.0.nat_ip
+  value       = google_compute_instance.backend_web_server.network_interface.0.access_config.0.nat_ip
 }
